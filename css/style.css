@@ -1,0 +1,8 @@
+@media (min-width: 48em) {
+  .container {
+    max-width: 46rem;
+  }
+}
+#title {
+	text-align:center;
+}
