@@ -15,8 +15,9 @@ if( $conn ) {
 
 $sql = "select * from data where linkkey ='test'";
 $stmt = sqlsrv_query( $conn, $sql);
+$row=sqlsrv_fetch_array($stmt);
 
-echo $stmt;
+echo $row;
 echo "123";
 function generateRandomString($length = 6) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
