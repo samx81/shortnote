@@ -13,12 +13,11 @@ if( $conn ) {
      die( print_r( sqlsrv_errors(), true));
 }
 
-$sql = "SELECT key,data FROM data";
-$stmt = sqlsrv_query( $conn, $sql)or die("sql error".sqlsrv_errors());
+$sql = "select * from data where linkkey ='test'";
+$stmt = sqlsrv_query( $conn, $sql);
 
 echo $stmt;
-echo "test";
-
+echo "123";
 function generateRandomString($length = 6) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
