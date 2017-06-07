@@ -32,7 +32,7 @@ function test() {
     xmlHTTP.open("GET", "get.php?linkkey=" + linkkey, true);
     xmlHTTP.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            $("#input").val = xmlHTTP.responseText;
+            $("#input").val(xmlHTTP.responseText);
         }
     }
 }
@@ -42,7 +42,7 @@ function get(){
     xmlHTTP.open("GET", "get.php?linkkey=" + linkkey, true);
     xmlHTTP.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            $("#input").val = xmlHTTP.responseText;
+            $("#input").val(xmlHTTP.responseText);
         }
     }
 };
