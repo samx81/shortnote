@@ -1,12 +1,19 @@
+@media (max-width: 36em) {
+  .container {
+    padding:0;
+  }
+}
 @media (min-width: 48em) {
   .container {
-    max-width: 46rem;
+    max-width: 52rem;
   }
 }
 #title {
 	text-align:center;
 }
-#notify{
-	padding-top:.4rem;
-	padding-left:.6rem;
+.hidden{
+	display:none;
+}
+#input{
+	height:20em;
 }

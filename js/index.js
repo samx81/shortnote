@@ -1,48 +1,54 @@
-$(document).ready(function(){
-	$("#basic-addon3").text(location.hostname+"/");
+$(document).ready(function() {
+  var key = location.pathname.split("/")[1];
+  if (key.length > 0) {
+    get(key);
+  }
+  $("#dynhostname").text(location.hostname + "/");
+	$("#homelink").attr("href","http://"+location.hostname);
 });
+function checkRecaptcha() {
+  res = $("#g-recaptcha-response").val();
 
-var xmlHTTP =new XMLHttpRequest();
-
-function check(){
-    var url = $("#customurl").val();
-		if(url){
-				xmlHTTP.open("GET","check.php?url="+url,true);
-				xmlHTTP.onreadystatechange = function () {
-						if (this.readyState == 4 && this.status == 200) {
-							$("#notify").removeClass("invisible");
-							if (xmlHTTP.responseText===("y")){
-									//顯示圈圈
-								$(".badge-success").show();
-								$(".badge-danger").hide();
-							}
-							else {
-								//顯示叉
-								$(".badge-danger").show();
-								$(".badge-success").hide();
-							}
-						}
-    		};
-		}
-		else $("#notify").addClass("invisible");
-};
-
-function test() {
-    var linkkey = "test";
-    xmlHTTP.open("GET", "get.php?linkkey=" + linkkey, true);
-    xmlHTTP.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            $("#input").val(xmlHTTP.responseText);
-        }
-    }
+  if (res == "" || res == undefined || res.length == 0) return false;
+  else return true;
 }
 
-function get(){
-    var linkkey = location.search.split("?")[1];
-    xmlHTTP.open("GET", "get.php?linkkey=" + linkkey, true);
-    xmlHTTP.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            $("#input").val(xmlHTTP.responseText);
-        }
+var xmlHTTP = new XMLHttpRequest();
+
+$("form").submit(function(e) {
+  var postData = $(this).serializeArray();
+  var formURL = $(this).attr("action");
+  if (!checkRecaptcha()) {
+    $("#novaild").show();
+    return false;
+  }
+  $.ajax({
+    url: formURL,
+    type: "POST",
+    data: postData,
+    success: function(data, textStatus, jqXHR) {
+      if (data == "FALSE") {
+        $("#customurl").addClass("form-control-warning");
+        $("#customdiv").addClass("has-danger");
+        $(".form-control-feedback").show();
+      } else {
+        $(".alert-success").show();
+        var workingurl = location.hostname + "/" + data;
+        $("#successurl").text(workingurl);
+        $("#successurl").attr("href", data);
+      }
     }
-};
+  });
+  e.preventDefault(); //STOP default action
+  e.unbind(); //unbind. to stop multiple form submit.
+});
+
+function get(key) {
+  xmlHTTP.open("GET", "get.php?linkkey=" + key, true);
+  xmlHTTP.send();
+  xmlHTTP.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      $("#input").val(xmlHTTP.responseText);
+    }
+  };
+}
