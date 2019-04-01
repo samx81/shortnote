@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Paste & Go!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  
+		<div class="container">
+			<div class="header">
+				<nav class="navbar navbar-toggleable-sm navbar-light bg-faded">
+					<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<a id="homelink" class="navbar-brand" href="#">Paste ＆ Go!</a>
+					<div class="collapse navbar-collapse" id="navbarText">
+						<ul class="navbar-nav justify-content-center mr-auto">
+							<li class="nav-item active ">
+								<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" data-toggle="modal" data-target="#exampleModal">About </a>
+							</li>
+						</ul>
+						<a class="btn btn-outline-success" href="#" data-toggle="modal" data-target="#loginModal">Sign up / Log in </a>
+					</div>
+				</nav>
+			</div>
+			<!-- about modal -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">About</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>Paste & Go是由4個輔仁大學資工系的學生所做的課堂專案，它可以讓你快速分享資料，只要貼上你想要分享的資料並自訂縮短連結，便可以將你的資料分享給任何人！</p>
+<p>這個專案使用了AJAX, PHP, Bootstrap, MSSQL以及reCAPTCHA等工具。</p>
+ 
+<p>Paste & Go is a school project made by four computer science major students in Fu Jen University. It lets you quickly share any information you want. Just post the info and customize your url link, you can share it anywhere! 
+This project used tools such as AJAX, PHP, Bootstrap, MSSQL and reCAPTCHA. 
+							
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- login coming soon -->
+			<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Sign up/ Login</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<h1>登入功能製作中</h1>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="jumbotron">
+				<h1 id="title">快速資料縮網址</h1>
+				<hr class="my-4">
+				<div class="mx-auto w-75">
+					<div class="alert alert-success text-center hidden" role="alert">
+						<strong>縮網址:</strong>
+						<a href="#" id="successurl" class="alert-link">www.example.com</a>
+					</div>
+					<form action="shorten.php" method="post">
+						<textarea class="w-100 common" id="input" placeholder="輸入資料" name="note" required></textarea>
+						<div class="form-group" id="customdiv">
+							<div class="input-group">
+							<span class="input-group-addon" id="dynhostname">https://example.com/</span>
+							<input type="text" class="form-control " placeholder="自訂網址" name="url" id="customurl" aria-describedby="basic-addon3">	
+						</div>
+							<div id="nourl"class="form-control-feedback fadeIn hidden">此名稱無法使用</div>
+					</div>
+						<div class="g-recaptcha" data-sitekey="#"></div>
+						<input type="hidden" name="recaptcha" data-rule-recaptcha="true">
+						<div id="novaild" class="w-75 fadeIn hidden alert alert-danger" role="alert">
+  <i class="fa fa-arrow-up" aria-hidden="true"></i><strong>請點擊驗證</strong></div>
+						<div class="pt-2 w-75 mx-auto">
+							<button type="submit" class="btn btn-block btn-success">送出</button>
+						</div>
+					</form>
+				</div>
+			</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>
